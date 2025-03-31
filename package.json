@@ -1,5 +1,5 @@
 {
-  "name": "vite-react-ts-template",
+  "name": "store-checkout",
   "private": true,
   "author": "Artyom <artyom.u@outlook.com> Ulanchik",
   "version": "0.0.1",
@@ -24,6 +24,7 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.19",
     "prettier": "^3.5.3",
+    "sass-embedded": "^1.86.1",
     "typescript": "^5.8.2",
     "vite": "^6.2.2"
   }
