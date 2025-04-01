@@ -8,7 +8,8 @@ interface Product {
 }
 
 interface BasketItem {
-
+    sku: string;
+    quantity: number;
 }
 
 interface PricingRules {
