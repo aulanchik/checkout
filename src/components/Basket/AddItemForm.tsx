@@ -22,14 +22,14 @@ const AddItemForm: FC<AddItemFormProps> = ({ skuInput, onSkuInput, onAddItem, is
     };
 
     return (
-        <div role="form" aria-label="Add item to basket">
+        <div className='basket-form' role="form" aria-label="Add item to basket">
             <input
                 type="text"
                 value={skuInput}
                 onChange={handleInputChange}
                 onKeyDown={handleKeyPress}
                 placeholder="Enter SKU"
-                maxLength={1}
+                className='basket-form-input'
                 aria-label="SKU input"
                 id="sku-input"
             />
@@ -37,6 +37,7 @@ const AddItemForm: FC<AddItemFormProps> = ({ skuInput, onSkuInput, onAddItem, is
                 onClick={onAddItem}
                 disabled={isAddDisabled}
                 aria-label="Add item to basket"
+                className='basket-form-button'
             >
                 Add Item
             </button>

@@ -4,7 +4,7 @@ import { formatPrice, findProductBySku } from '@/utils';
 import BasketItem from './BasketItem';
 import AddItemForm from './AddItemForm';
 import BasketActions from './BasketActions';
-import Summary from '../Summary'
+import Summary from '../Summary';
 
 const Basket: FC = () => {
     const { basket, pricingRules, addItemQuantity, removeItemQuantity, clearBasket } = useBasket();
@@ -23,7 +23,11 @@ const Basket: FC = () => {
 
     const renderBasketItems = () => {
         if (basket.length === 0) {
-            return <p className="empty-basket" role="status">Your basket is empty</p>;
+            return (
+                <p className="basket-empty" role="status">
+                    Your basket is empty
+                </p>
+            );
         }
 
         return basket.map(({ sku, quantity }) => {
@@ -43,8 +47,7 @@ const Basket: FC = () => {
 
     return (
         <section className="basket" role="region" aria-label="Shopping Basket">
-            <h2 className="basket-title">Your Basket</h2>
-
+            <h2 className="section-title">Your Basket</h2>
             <AddItemForm
                 skuInput={skuInput}
                 onSkuInput={handleSkuInput}

@@ -7,9 +7,9 @@ const Summary: FC = () => {
     const totalPrice = calculateTotal();
 
     return (
-        <div>
-            <h3>Total:</h3>
-            <span>{formatPrice(totalPrice)}</span>
+        <div className="summary">
+            <h3 className="summary-title">Total:</h3>
+            <span className="summary-amount">{formatPrice(totalPrice)}</span>
         </div>
     )
 }

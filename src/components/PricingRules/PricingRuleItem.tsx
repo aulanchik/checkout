@@ -24,7 +24,7 @@ const PricingRuleItem: FC<PricingRuleItemProps> = ({
     onSave,
     onCancel,
 }) => (
-    <div>
+    <div className="rules-list-item">
         {isEditing ? (
             <EditForm
                 product={product}
