@@ -1,0 +1,46 @@
+@use "../variables";
+
+.checkout {
+    display: flex;
+    flex-direction: column;
+    max-width: variables.$breakpoint-xl;
+    min-height: 100vh;
+    margin: 0 auto;
+
+    &-main {
+        padding: variables.$spacing-md 0;
+    }
+
+    &-header {
+        padding: variables.$spacing-lg;
+        background-color: variables.$white;
+        box-shadow: variables.$box-shadow;
+        border-radius: variables.$border-radius;
+    }
+
+    &-title {
+        margin: 0;
+        text-align: center;
+        font-size: variables.$font-size-xl;
+        color: variables.$text-color;
+    }
+
+    &-wrapper {
+        inline-size: min(100% - 80px, variables.$breakpoint-xl);
+        margin-inline: auto;
+    }
+
+    &-layout {
+        display: grid;
+        padding-top: variables.$spacing-md;
+        gap: variables.$spacing-md;
+
+        @media (min-width: variables.$breakpoint-md) {
+            grid-template-columns: 2fr 1fr;
+        }
+
+        @media (min-width: variables.$breakpoint-lg) {
+            grid-template-columns: 3fr 1fr;
+        }
+    }
+}
