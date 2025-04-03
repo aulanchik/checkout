@@ -1,0 +1,210 @@
+@use "sass:color";
+@use "../variables";
+
+.basket {
+    display: flex;
+    flex-direction: column;
+    padding: variables.$spacing-md;
+    background-color: variables.$white;
+    border: 1px solid variables.$border-color;
+    border-radius: variables.$border-radius;
+    min-height: 100%;
+
+    &-form {
+        display: flex;
+        gap: variables.$spacing-sm;
+        margin-bottom: variables.$spacing-sm;
+        width: 100%;
+
+        &-input {
+            flex: 1;
+            padding: variables.$spacing-sm;
+            font-size: variables.$font-size-sm;
+            border: 1px solid variables.$border-color;
+            border-radius: variables.$border-radius;
+            text-transform: uppercase;
+            width: 100%;
+
+            &:focus {
+                outline: none;
+                border-color: variables.$primary-color;
+                box-shadow: variables.$box-shadow;
+            }
+
+            &::placeholder {
+                color: variables.$light-text;
+            }
+        }
+
+        &-button {
+            padding: variables.$spacing-sm;
+            font-size: variables.$font-size-md;
+            background-color: variables.$success-color;
+            border-radius: variables.$border-radius;
+            transition: background-color 0.2s;
+            gap: variables.$spacing-xs;
+            color: variables.$white;
+            text-transform: uppercase;
+            cursor: pointer;
+            border: none;
+
+            &:disabled {
+                background-color: variables.$border-color;
+                opacity: variables.$disabled-opacity;
+                cursor: not-allowed;
+            }
+
+            &:not(:disabled):hover {
+                background-color: color.adjust(variables.$success-color, $lightness: -10%);
+            }
+
+            &:focus {
+                outline: 3px solid variables.$grey;
+                outline-offset: 2px;
+            }
+        }
+
+        @media (max-width: variables.$breakpoint-md) {
+            flex-direction: column;
+
+            &-input {
+                width: 100%;
+            }
+
+            &-button {
+                width: 100%;
+            }
+        }
+    }
+
+    &-empty {
+        text-align: center;
+        color: variables.$light-text;
+        font-size: variables.$font-size-md;
+        margin: variables.$spacing-xl 0;
+        font-style: italic;
+    }
+
+    &-footer {
+        margin-top: variables.$spacing-xs;
+        padding-top: variables.$spacing-sm;
+        border-top: 2px solid variables.$border-color;
+    }
+
+    &-items {
+        flex: 1;
+        flex-direction: column;
+        margin-bottom: variables.$spacing-lg;
+        align-items: space-evenly;
+        gap: variables.$spacing-sm;
+    }
+
+    &-item {
+        display: grid;
+        align-items: center;
+        grid-template-columns: 1fr auto;
+        padding: variables.$spacing-sm;
+        margin: variables.$spacing-sm 0;
+        background-color: variables.$white;
+        border-radius: variables.$border-radius;
+        border: 1px solid variables.$border-color;
+        gap: variables.$spacing-md;
+
+        &-info {
+            display: flex;
+            flex-direction: column;
+
+            &-name {
+                font-weight: 600;
+                color: variables.$text-color;
+                font-size: variables.$font-size-md;
+            }
+
+            &-price {
+                color: variables.$light-text;
+                font-size: variables.$font-size-sm;
+            }
+        }
+
+        &-controls {
+            display: flex;
+            align-items: center;
+            place-content: center;
+            gap: variables.$spacing-sm;
+            color: variables.$text-color;
+            font-size: variables.$font-size-md;
+            cursor: pointer;
+
+            & button {
+                display: flex;
+                border-radius: variables.$border-radius;
+                padding: variables.$spacing-xs;
+                border: none;
+            }
+
+            &-value {
+                font-size: variables.$font-size-md;
+                font-weight: 600;
+            }
+
+            &-plus {
+                background-color: variables.$success-color;
+                color: variables.$white;
+
+                &:hover {
+                    background-color: color.adjust(variables.$success-color, $lightness: -10%);
+                }
+
+                &:focus {
+                    outline: 3px solid variables.$grey;
+                    outline-offset: 2px;
+                }
+            }
+
+            &-minus {
+                background-color: variables.$red;
+                color: variables.$white;
+
+                &:hover {
+                    background-color: color.adjust(variables.$red, $lightness: -10%);
+                }
+
+                &:focus {
+                    outline: 3px solid variables.$grey;
+                    outline-offset: 2px;
+                }
+            }
+        }
+    }
+
+    &-actions {
+        margin-top: variables.$spacing-xs;
+        padding: variables.$spacing-sm 0;
+
+        &-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: variables.$spacing-sm;
+            padding: variables.$spacing-xs variables.$spacing-md;
+            font-size: variables.$font-size-md;
+            background-color: variables.$white;
+            color: variables.$red;
+            border: 2px solid variables.$red;
+            border-radius: variables.$border-radius;
+            transition: background-color 0.2s;
+            cursor: pointer;
+            width: 100%;
+
+            &:hover {
+                background-color: variables.$red;
+                color: variables.$white;
+            }
+
+            &:focus {
+                outline: color.adjust(variables.$red, $alpha: 0.3);
+                outline-offset: 2px;
+            }
+        }
+    }
+}

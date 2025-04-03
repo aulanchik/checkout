@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { PlusCircle, MinusCircle } from 'react-feather'
+import { Plus, Minus } from 'react-feather'
 
 export interface BasketItemProps {
     sku: string;
@@ -17,24 +17,26 @@ const BasketItem: FC<BasketItemProps> = ({
     onAdd
 }) => {
     return (
-        <div role="listitem">
-            <div>
-                <span>{sku}</span>
-                <span>{unitPrice} each</span>
+        <div className="basket-item" role="listitem">
+            <div className='basket-item-info'>
+                <span className='basket-item-info-name'>{sku}</span>
+                <span className='basket-item-info-price'>{unitPrice} each</span>
             </div>
-            <div>
+            <div className='basket-item-controls'>
                 <button
                     onClick={onRemove}
+                    className='basket-item-controls-minus'
                     aria-label={`Remove one Item ${sku}`}
                 >
-                    <MinusCircle />
+                    <Minus />
                 </button>
-                <span aria-label={`Quantity of Item ${sku}`}>{quantity}</span>
+                <span className="basket-item-controls-value" aria-label={`Quantity of Item ${sku}`}>{quantity}</span>
                 <button
                     onClick={onAdd}
+                    className='basket-item-controls-plus'
                     aria-label={`Add one more Item ${sku}`}
                 >
-                    <PlusCircle />
+                    <Plus />
                 </button>
             </div>
         </div>

@@ -6,10 +6,10 @@ interface BasketActionsProps {
 }
 
 const BasketActions: FC<BasketActionsProps> = ({ onClearBasket }) => (
-    <div className={`basket-actions`}>
+    <div className='basket-actions'>
         <button
             onClick={onClearBasket}
-            className="clear-basket-button"
+            className="basket-actions-button"
             aria-label="Clear all items from basket"
         >
             <Trash aria-hidden="true" />
