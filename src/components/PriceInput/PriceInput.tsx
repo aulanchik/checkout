@@ -12,6 +12,7 @@ interface PriceInputProps {
 }
 
 const PriceInput: FC<PriceInputProps> = ({ id, label, name, value, onChange, sku, error }) => {
+
     const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         const input = e.currentTarget;
         let inputValue = input.value;
@@ -22,9 +23,8 @@ const PriceInput: FC<PriceInputProps> = ({ id, label, name, value, onChange, sku
             input.value = validateDecimalInput(inputValue);
         }
 
-        // Remove leading zeros unless it's a decimal (e.g., "0.5")
         if (inputValue.startsWith('0') && !inputValue.startsWith('0.')) {
-            input.value = inputValue.replace(/^0+/, '');
+            input.value = inputValue.replace(/^0+/, '1');
         }
     };
 
@@ -40,9 +40,11 @@ const PriceInput: FC<PriceInputProps> = ({ id, label, name, value, onChange, sku
             <label htmlFor={id}>{label}</label>
             <input
                 id={id}
-                type="number"
+                type="text"
                 name={name}
                 value={value}
+                inputMode='numeric'
+                pattern={name === 'specialQuantity' || name === 'unitPrice' ? '[0-9]*' : '[0-9]*[.,]?[0-9]*'}
                 onChange={onChange}
                 onInput={handleInput}
                 onKeyDown={handleKeyDown}

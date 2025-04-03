@@ -13,7 +13,7 @@ const PricingRules: FC = () => {
             ...product,
             specialPrice: product.specialPrice
                 ? { quantity: product.specialPrice.quantity, price: product.specialPrice.price }
-                : { quantity: 2, price: 0 }, // Default minimum special quantity is 2
+                : { quantity: 2, price: 0 },
         });
         setValidationErrors({});
     };
@@ -29,7 +29,6 @@ const PricingRules: FC = () => {
         setEditingProduct((prev) => {
             if (!prev) return null;
 
-            // Ensure specialPrice is always defined
             const updatedProduct: Product = {
                 ...prev,
                 specialPrice: {

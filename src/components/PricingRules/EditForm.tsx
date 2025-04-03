@@ -12,48 +12,42 @@ interface EditFormProps {
 }
 
 const EditForm: FC<EditFormProps> = ({ product, editingProduct, validationErrors, onChange, onSave, onCancel }) => (
-    <div role="form" aria-label={`Edit pricing rule for item ${product.sku}`}>
+    <div className='rule-edit-form' role="form" aria-label={`Edit pricing rule for item ${product.sku}`}>
         <h3>SKU: {product.sku}</h3>
-        <div>
-            <PriceInput
-                id={`unitPrice-${product.sku}`}
-                label="Unit Price (p):"
-                name="unitPrice"
-                value={editingProduct?.unitPrice || ''}
-                onChange={onChange}
-                sku={product.sku}
-            />
-            {validationErrors.unitPrice && (
-                <span>{validationErrors.unitPrice}</span>
-            )}
-        </div>
-        <div>
-            <PriceInput
-                id={`specialQuantity-${product.sku}`}
-                label="Special Quantity:"
-                name="specialQuantity"
-                value={editingProduct?.specialPrice?.quantity || ''}
-                onChange={onChange}
-                sku={product.sku}
-            />
-            {validationErrors.specialQuantity && (
-                <span>{validationErrors.specialQuantity}</span>
-            )}
-        </div>
-        <div>
-            <PriceInput
-                id={`specialPrice-${product.sku}`}
-                label="Special Price (p):"
-                name="specialPrice"
-                value={editingProduct?.specialPrice?.price || ''}
-                onChange={onChange}
-                sku={product.sku}
-            />
-            {validationErrors.specialPrice && (
-                <span>{validationErrors.specialPrice}</span>
-            )}
-        </div>
-        <div>
+        <PriceInput
+            id={`unitPrice-${product.sku}`}
+            label="Unit Price (p):"
+            name="unitPrice"
+            value={editingProduct?.unitPrice || ''}
+            onChange={onChange}
+            sku={product.sku}
+        />
+        {validationErrors.unitPrice && (
+            <span>{validationErrors.unitPrice}</span>
+        )}
+        <PriceInput
+            id={`specialQuantity-${product.sku}`}
+            label="Special Quantity:"
+            name="specialQuantity"
+            value={editingProduct?.specialPrice?.quantity || ''}
+            onChange={onChange}
+            sku={product.sku}
+        />
+        {validationErrors.specialQuantity && (
+            <span>{validationErrors.specialQuantity}</span>
+        )}
+        <PriceInput
+            id={`specialPrice-${product.sku}`}
+            label="Special Price (p):"
+            name="specialPrice"
+            value={editingProduct?.specialPrice?.price || ''}
+            onChange={onChange}
+            sku={product.sku}
+        />
+        {validationErrors.specialPrice && (
+            <span>{validationErrors.specialPrice}</span>
+        )}
+        <div className='button-group'>
             <button
                 onClick={onSave}
                 aria-label={`Save changes for item ${product.sku}`}
@@ -67,7 +61,7 @@ const EditForm: FC<EditFormProps> = ({ product, editingProduct, validationErrors
                 Cancel
             </button>
         </div>
-    </div>
+    </div >
 );
 
 export default EditForm;
