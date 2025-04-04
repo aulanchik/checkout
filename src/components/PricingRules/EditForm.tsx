@@ -35,7 +35,7 @@ const EditForm: FC<EditFormProps> = ({ product, onSave, onCancel, onChange }) =>
 
     const handleSave = () => {
         const errors = {
-            unitPrice: validateField(unitPrice, 'Unit Price'),
+            unitPrice: validateField(unitPrice, 'Unit Price', true),
             specialQuantity: validateField(specialQuantity, 'Special Quantity'),
             specialPrice: validateField(specialPrice, 'Special Price'),
         };
