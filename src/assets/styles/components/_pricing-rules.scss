@@ -51,6 +51,7 @@
                     color: variables.$white;
                     border: 1px solid variables.$red;
                     display: inline-block;
+                    min-width: fit-content;
                     text-align: center;
 
                     white-space: nowrap;
@@ -89,21 +90,21 @@
 
             .rule-edit-form {
                 div {
-                    margin-bottom: variables.$spacing-xs;
+                    margin-bottom: variables.$spacing-sm;
 
                     label {
                         display: block;
                         margin-bottom: variables.$spacing-xs;
                         font-size: 1.1rem;
-                        color: #2c3e50;
+                        color: variables.$text-color;
                     }
 
                     input {
                         width: 100%;
                         padding: variables.$spacing-xs;
                         font-size: 1.1rem;
-                        border: 2px solid #ddd;
-                        border-radius: 4px;
+                        border: 2px solid variables.$border-color;
+                        border-radius: variables.$border-radius;
                         transition: border-color 0.2s;
 
                         &:focus {
@@ -163,5 +164,9 @@
         }
     }
 
-
+    .error {
+        color: variables.$red;
+        font-size: variables.$font-size-sm;
+        margin-top: variables.$spacing-xs;
+    }
 }
