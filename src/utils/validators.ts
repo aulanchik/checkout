@@ -35,7 +35,7 @@ const validateSpecialFields = (specialQuantity: number | '', specialPrice: numbe
 };
 
 const validateField = (value: number | '', fieldName: string): string | null => {
-    if (value === '') return null;
+    if (value === '') return `${fieldName} is required`;
     if (value === 0) return `${fieldName} cannot be zero`;
     if (value < 0) return `${fieldName} must be a positive number`;
     if (!Number.isInteger(value)) return `${fieldName} must be a whole number`;

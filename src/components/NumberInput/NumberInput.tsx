@@ -27,6 +27,7 @@ const NumberInput: FC<NumberInputProps> = ({ label, name, value, onChange, valid
         <div className="price-input">
             <label htmlFor={name}>{label}</label>
             <input
+                id={name}
                 type="text"
                 name={name}
                 value={value === '' ? '' : value}
