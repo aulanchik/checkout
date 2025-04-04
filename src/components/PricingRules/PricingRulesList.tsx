@@ -7,8 +7,8 @@ interface PricingRulesListProps {
     editingProduct: Product | null;
     validationErrors: { [key: string]: string };
     onEdit: (product: Product) => void;
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    onSave: () => void;
+    onSave: (updatedProduct: Product) => void;
+    onChange?: (updatedProduct: Product) => void;
     onCancel: () => void;
 }
 
@@ -17,9 +17,9 @@ const PricingRulesList: FC<PricingRulesListProps> = ({
     editingProduct,
     validationErrors,
     onEdit,
-    onChange,
     onSave,
     onCancel,
+    onChange,
 }) => (
     <div className="rules-list">
         {products.map((product) => (
@@ -29,9 +29,9 @@ const PricingRulesList: FC<PricingRulesListProps> = ({
                 isEditing={editingProduct?.sku === product.sku}
                 editingProduct={editingProduct}
                 validationErrors={validationErrors}
-                onEdit={onEdit}
                 onChange={onChange}
                 onCancel={onCancel}
+                onEdit={onEdit}
                 onSave={onSave}
             />
         ))}

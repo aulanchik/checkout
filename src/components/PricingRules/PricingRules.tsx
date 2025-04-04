@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
+import { Product } from '@/types';
 import useBasket from '@/hooks/useBasket';
 import PricingRulesList from './PricingRulesList';
-import { Product } from '@/types';
 
 const PricingRules: FC = () => {
     const { pricingRules, updatePricingRule } = useBasket();
@@ -18,42 +18,12 @@ const PricingRules: FC = () => {
         setValidationErrors({});
     };
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (!editingProduct) return;
-
-        const { name, value } = e.target;
-        const numValue = value === '' ? 0 : parseFloat(value);
-
-        if (isNaN(numValue)) return;
-
-        setEditingProduct((prev) => {
-            if (!prev) return null;
-
-            const updatedProduct: Product = {
-                ...prev,
-                specialPrice: {
-                    quantity: prev.specialPrice?.quantity ?? 0,
-                    price: prev.specialPrice?.price ?? 0,
-                },
-            };
-
-            if (name === 'unitPrice') {
-                updatedProduct.unitPrice = numValue;
-            } else if (name === 'specialQuantity') {
-                updatedProduct.specialPrice!.quantity = Math.max(numValue, 2);
-            } else if (name === 'specialPrice') {
-                updatedProduct.specialPrice!.price = numValue;
-            }
-
-            return updatedProduct;
-        });
-    };
-
-    const handleSave = () => {
-        if (!editingProduct) return;
-        updatePricingRule(editingProduct);
-        setEditingProduct(null);
-        setValidationErrors({});
+    const handleSave = (updatedProduct: Product) => {
+        if (updatedProduct) {
+            updatePricingRule(updatedProduct);
+            setEditingProduct(null);
+            setValidationErrors({});
+        }
     };
 
     const handleCancel = () => {
@@ -69,7 +39,6 @@ const PricingRules: FC = () => {
                 editingProduct={editingProduct}
                 validationErrors={validationErrors}
                 onEdit={handleEdit}
-                onChange={handleChange}
                 onSave={handleSave}
                 onCancel={handleCancel}
             />
