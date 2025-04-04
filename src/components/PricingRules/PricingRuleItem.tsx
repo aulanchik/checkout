@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Product } from '@/types';
-import EditForm from './EditForm'
-import DisplayView from './DisplayView'
+import EditForm from './EditForm';
+import DisplayView from './DisplayView';
 
 interface PricingRuleItemProps {
     product: Product;
@@ -9,30 +9,26 @@ interface PricingRuleItemProps {
     editingProduct: Product | null;
     validationErrors: { [key: string]: string };
     onEdit: (product: Product) => void;
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    onSave: () => void;
+    onSave: (updatedProduct: Product) => void;
+    onChange?: (updatedProduct: Product) => void;
     onCancel: () => void;
 }
 
 const PricingRuleItem: FC<PricingRuleItemProps> = ({
     product,
     isEditing,
-    editingProduct,
-    validationErrors,
     onEdit,
-    onChange,
     onSave,
     onCancel,
+    onChange = () => { },
 }) => (
     <div className="rules-list-item">
         {isEditing ? (
             <EditForm
                 product={product}
-                editingProduct={editingProduct}
-                validationErrors={validationErrors}
+                onCancel={onCancel}
                 onChange={onChange}
                 onSave={onSave}
-                onCancel={onCancel}
             />
         ) : (
             <DisplayView product={product} onEdit={onEdit} />

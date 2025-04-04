@@ -1,18 +1,13 @@
 @use "../variables";
 
 .checkout {
-    display: flex;
-    flex-direction: column;
-    max-width: variables.$breakpoint-xl;
-    min-height: 100vh;
-    margin: 0 auto;
 
     &-main {
         padding: variables.$spacing-md 0;
     }
 
     &-header {
-        padding: variables.$spacing-lg;
+        padding: variables.$spacing-lg 0;
         background-color: variables.$white;
         box-shadow: variables.$box-shadow;
         border-radius: variables.$border-radius;

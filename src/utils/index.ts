@@ -1,13 +1,13 @@
 import formatPrice from "./formatters";
 import { findProductBySku, calculateItemPrice, calculateBasketTotal } from './calculations';
-import { isValidKeyPress, validateDecimalInput, validateSpecialQuantity } from './validators';
+import { validatePositiveInteger, validateSpecialFields, validateField } from './validators';
 
 export {
     formatPrice,
     findProductBySku,
     calculateItemPrice,
     calculateBasketTotal,
-    validateSpecialQuantity,
-    validateDecimalInput,
-    isValidKeyPress,
+    validatePositiveInteger,
+    validateSpecialFields,
+    validateField,
 }
