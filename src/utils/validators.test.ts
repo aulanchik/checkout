@@ -79,8 +79,12 @@ describe('validateSpecialFields', () => {
 });
 
 describe('validateField', () => {
-    it('should return error message if value is empty', () => {
-        expect(validateField('', 'Test Field')).toBe('Test Field is required');
+    it('should return error message if value is empty and required', () => {
+        expect(validateField('', 'Test Field', true)).toBe('Test Field is required');
+    });
+
+    it('should return null if value is empty but not required', () => {
+        expect(validateField('', 'Test Field')).toBeNull();
     });
 
     it('should return an error message if value is zero', () => {
