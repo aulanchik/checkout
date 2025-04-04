@@ -1,0 +1,20 @@
+@use "../variables";
+
+.summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &-title {
+        margin: 0;
+        font-size: variables.$font-size-lg;
+        line-height: 1;
+    }
+
+    &-amount {
+        line-height: 1;
+        font-weight: bold;
+        color: variables.$success-color;
+        font-size: variables.$font-size-lg;
+    }
+}

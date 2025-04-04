@@ -1,0 +1,172 @@
+@use "sass:color";
+@use "../variables";
+
+.pricing-rules {
+    padding: variables.$spacing-md;
+    background-color: variables.$white;
+    border-radius: variables.$border-radius;
+    border: 1px solid variables.$border-color;
+
+    .rules-list {
+        display: grid;
+        gap: variables.$spacing-md;
+
+        &-item {
+            background: variables.$white;
+            padding: variables.$spacing-md;
+            border-radius: variables.$border-radius;
+            border: 1px solid variables.$border-color;
+            box-shadow: variables.$box-shadow;
+            transition: all 0.2s;
+
+            &--title {
+                margin-bottom: variables.$spacing-xs;
+                color: variables.$text-color;
+            }
+
+            .rule-display {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                gap: variables.$spacing-sm;
+
+                &--header {
+                    display: grid;
+                    grid-template-columns: 2fr 1fr;
+                    align-items: baseline;
+                    flex-wrap: nowrap;
+                }
+
+                &--title {
+                    margin-bottom: variables.$spacing-xs;
+                    color: variables.$text-color;
+                    gap: variables.$spacing-sm;
+                }
+
+                .special-tag {
+                    background: variables.$red;
+                    padding: variables.$spacing-xs variables.$spacing-sm;
+                    border-radius: variables.$border-radius;
+                    font-size: variables.$font-size-md;
+                    color: variables.$white;
+                    border: 1px solid variables.$red;
+                    display: inline-block;
+                    min-width: fit-content;
+                    text-align: center;
+
+                    white-space: nowrap;
+                    word-wrap: break-word;
+                    overflow-wrap: break-word;
+                    text-overflow: ellipsis;
+
+                    @media (max-width: variables.$breakpoint-md) {
+                        font-size: variables.$font-size-sm;
+                        padding: variables.$spacing-xs;
+                    }
+                }
+
+                button {
+                    margin-top: auto;
+                    padding: variables.$spacing-sm variables.$spacing-md;
+                    font-size: variables.$font-size-md;
+                    background-color: variables.$primary-color;
+                    border-radius: variables.$border-radius;
+                    color: variables.$white;
+                    border: none;
+                    cursor: pointer;
+                    width: 100%;
+                    transition: all 0.2s;
+
+                    &:hover {
+                        background-color: color.adjust(variables.$primary-color, $lightness: -10%);
+                    }
+
+                    &:focus {
+                        outline: 3px solid rgba(52, 152, 219, 0.5);
+                        outline-offset: 2px;
+                    }
+                }
+            }
+
+            .rule-edit-form {
+                div {
+                    margin-bottom: variables.$spacing-sm;
+
+                    label {
+                        display: block;
+                        margin-bottom: variables.$spacing-xs;
+                        font-size: 1.1rem;
+                        color: variables.$text-color;
+                    }
+
+                    input {
+                        width: 100%;
+                        padding: variables.$spacing-xs;
+                        font-size: 1.1rem;
+                        border: 2px solid variables.$border-color;
+                        border-radius: variables.$border-radius;
+                        transition: border-color 0.2s;
+
+                        &:focus {
+                            border-color: variables.$grey;
+                            outline: none;
+                        }
+                    }
+                }
+
+                .button-group {
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    margin-top: variables.$spacing-md;
+                    gap: variables.$spacing-sm;
+
+                    button {
+                        padding: variables.$spacing-sm variables.$spacing-lg;
+                        font-size: variables.$font-size-md;
+                        border: none;
+                        border-radius: variables.$border-radius;
+                        cursor: pointer;
+                        transition: all 0.2s;
+                        color: variables.$white;
+
+                        &:first-child {
+                            background-color: #2ecc71;
+
+                            &:hover {
+                                background-color: color.adjust(variables.$success-color, $lightness: -10%);
+                            }
+
+                            &:focus {
+                                outline: 3px solid rgba(46, 204, 113, 0.5);
+                                outline-offset: 2px;
+                            }
+                        }
+
+                        &:last-child {
+                            background-color: #e74c3c;
+
+                            &:hover {
+                                background-color: color.adjust(#c0392b, $lightness: -10%);
+                            }
+
+                            &:focus {
+                                outline: 3px solid rgba(231, 76, 60, 0.5);
+                                outline-offset: 2px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        @media (min-width: variables.$breakpoint-md) {
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        }
+    }
+
+    .error {
+        color: variables.$red;
+        font-size: variables.$font-size-sm;
+        margin-top: variables.$spacing-xs;
+    }
+}
